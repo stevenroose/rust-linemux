@@ -452,6 +452,9 @@ mod tests {
             .unwrap();
         assert_eq!(event1.kind, expected_event,);
 
+        // we get another access(open) event
+        watcher.next().await;
+
         let _file2 = File::create(&file_path2)
             .await
             .expect("Failed to create file");
